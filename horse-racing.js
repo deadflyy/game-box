@@ -792,10 +792,17 @@ class HorseRacingGame {
     }
 
     updateStats() {
-        document.getElementById('questionsAnswered').textContent = this.questionsAnswered;
-        document.getElementById('boostCount').textContent = this.boostCount;
-        document.getElementById('correctCount').textContent = this.correctAnswers;
-        document.getElementById('score').textContent = this.totalScore;
+        const questionsEl = document.getElementById('questionsAnswered');
+        if (questionsEl) questionsEl.textContent = this.questionsAnswered;
+
+        const boostEl = document.getElementById('boostCount');
+        if (boostEl) boostEl.textContent = this.boostCount;
+
+        const correctEl = document.getElementById('correctCount');
+        if (correctEl) correctEl.textContent = this.correctAnswers;
+
+        const scoreEl = document.getElementById('score');
+        if (scoreEl) scoreEl.textContent = this.totalScore;
 
         const playerHorse = this.horses.find(h => h.id === this.selectedHorse);
         const speedEl = document.getElementById('speedLevel');
