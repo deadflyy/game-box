@@ -84,10 +84,16 @@
 
         .screen {
             display: none;
+            animation: fadeIn 0.4s ease;
         }
 
         .screen.active {
             display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .start-screen {
@@ -164,6 +170,82 @@
             margin-top: 5px;
         }
 
+        /* 关卡选择 */
+        .level-selector {
+            margin: 25px 0;
+        }
+
+        .level-selector h3 {
+            color: #FF6B9D;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .level-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .level-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            border: 3px solid #FFD5E0;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .level-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .level-btn.current {
+            border-color: #FF6B9D;
+            background: #FFF5F7;
+            box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.3);
+        }
+
+        .level-btn.unlocked {
+            border-color: #FF9EB5;
+        }
+
+        .level-btn.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #f0f0f0;
+        }
+
+        .level-number {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .level-status {
+            font-size: 10px;
+            color: #999;
+        }
+
+        .level-info {
+            background: #FFF9E6;
+            padding: 10px 20px;
+            border-radius: 15px;
+            color: #666;
+            font-size: 14px;
+            display: inline-block;
+        }
+
         .features {
             display: flex;
             justify-content: center;
@@ -194,6 +276,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+            font-family: inherit;
         }
 
         .btn-primary {
@@ -206,9 +289,20 @@
             box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
         }
 
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         .btn-secondary {
             background: #f0f0f0;
             color: #666;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
         }
 
         .game-screen {
@@ -220,6 +314,12 @@
             box-shadow: 0 5px 30px rgba(0,0,0,0.2);
             max-width: 100%;
             height: auto;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
 
         .race-info {
@@ -235,6 +335,29 @@
             padding: 10px 20px;
             border-radius: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 进度条 */
+        .progress-bar {
+            width: 80px;
+            height: 12px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B9D, #FFD700);
+            border-radius: 6px;
+            transition: width 0.3s;
+            width: 0%;
         }
 
         .puzzle-modal {
@@ -325,6 +448,7 @@
             cursor: pointer;
             transition: all 0.3s;
             color: #333;
+            font-family: inherit;
         }
 
         .answer-option:hover {
@@ -335,11 +459,25 @@
         .answer-option.correct {
             background: #90EE90;
             border-color: #32CD32;
+            animation: correctPulse 0.5s ease;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .answer-option.wrong {
             background: #FFB6C1;
             border-color: #FF69B4;
+            animation: wrongShake 0.3s ease;
+        }
+
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
         }
 
         .play-audio-btn {
@@ -351,6 +489,7 @@
             font-size: 16px;
             transition: all 0.3s;
             margin: 10px 0;
+            font-family: inherit;
         }
 
         .play-audio-btn:hover {
@@ -451,6 +590,12 @@
             border-radius: 10px;
         }
 
+        .result-level-info {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
         .encouragement {
             color: #666;
             font-size: 18px;
@@ -471,6 +616,13 @@
             font-size: 14px;
         }
 
+        /* 浮动得分动画 */
+        @keyframes floatUp {
+            from { opacity: 1; transform: translateX(-50%) translateY(0); }
+            to { opacity: 0; transform: translateX(-50%) translateY(-60px); }
+        }
+
+        /* 认证弹窗 */
         .auth-modal {
             position: fixed;
             top: 0;
@@ -563,6 +715,24 @@
             .puzzle-options {
                 grid-template-columns: 1fr;
             }
+
+            .level-btn {
+                width: 55px;
+                height: 55px;
+            }
+
+            .level-number {
+                font-size: 18px;
+            }
+
+            .race-stat {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .progress-bar {
+                width: 60px;
+            }
         }
     </style>
 </head>
@@ -612,6 +782,15 @@
                     </div>
                 </div>
 
+                <!-- 关卡选择 -->
+                <div class="level-selector">
+                    <h3>🎯 选择关卡</h3>
+                    <div id="levelGrid" class="level-grid"></div>
+                    <div class="level-info">
+                        <span id="levelDesc">第1关：简单加法（5以内）</span>
+                    </div>
+                </div>
+
                 <div class="features">
                     <div class="feature">
                         <span class="feature-icon">🔢</span>
@@ -642,15 +821,22 @@
 
                 <div class="race-info">
                     <div class="race-stat">
-                        <span>🏁 进度：</span>
+                        <span>🏁</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
                         <span id="raceProgress">0%</span>
                     </div>
                     <div class="race-stat">
-                        <span>⚡ 加速次数：</span>
-                        <span id="boostCount">0</span>
+                        <span>🏎️ 速度：</span>
+                        <span id="speedLevel">0</span>
                     </div>
                     <div class="race-stat">
-                        <span>📝 答对题目：</span>
+                        <span>🔥 连击：</span>
+                        <span id="comboCount">0</span>
+                    </div>
+                    <div class="race-stat">
+                        <span>📝 答对：</span>
                         <span id="correctCount">0</span>
                     </div>
                 </div>
@@ -692,18 +878,19 @@
                         <span class="celebration-emoji">🎊</span>
                     </div>
                     <h2 id="resultTitle">比赛结束！</h2>
+                    <div class="result-level-info" id="resultLevelInfo"></div>
                     <div class="race-results" id="raceResults"></div>
                     <p class="encouragement" id="encouragement">太棒了！</p>
                     <div class="complete-buttons">
                         <button id="raceAgainBtn" class="btn btn-primary">再跑一次 🔄</button>
-                        <button id="backToSelectBtn" class="btn btn-secondary">换匹马 🐴</button>
+                        <button id="backToSelectBtn" class="btn btn-secondary">选择关卡 🎯</button>
                     </div>
                 </div>
             </div>
         </main>
 
         <footer class="game-footer">
-            <p>🖱️ 点击答案答题 | 🔢 10以内加减法 | 🔤 认识字母 | 🀄 认识汉字</p>
+            <p>🖱️ 点击答案答题 | 🔢 数学加减法 | 🔤 认识字母 | 🀄 认识汉字</p>
         </footer>
     </div>
 
@@ -741,7 +928,8 @@
         async function saveGameProgress_() {
             if (!window.auth.getUserId() || !gameProgress_ || !game) return;
             await gameProgress_.save({
-                score: game.totalScore || 0
+                score: game.totalScore || 0,
+                level: game.currentLevel || 1
             });
         }
 
