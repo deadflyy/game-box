@@ -170,7 +170,8 @@ app.post('/api/tts', async (req, res) => {
     // 创建 OpenAI 客户端
     const client = new OpenAI({
       apiKey: apiKey,
-      baseURL: 'https://api.xiaomimimo.com/v1'
+      // baseURL: 'https://api.xiaomimimo.com/v1'
+      baseURL: 'https://token-plan-cn.xiaomimimo.com/v1',
     });
 
     // 构建消息
