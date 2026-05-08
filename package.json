@@ -13,5 +13,8 @@
     "express": "^4.22.1",
     "openai": "^6.36.0",
     "sql.js": "^1.10.3"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }

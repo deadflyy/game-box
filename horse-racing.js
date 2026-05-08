@@ -203,9 +203,9 @@ class HorseRacingGame {
     async loadAssets() {
         const manifest = {
             images: {
-                'horse-purple': 'assets/images/horse/horse-purple.svg',
-                'horse-blue': 'assets/images/horse/horse-blue.svg',
-                'horse-red': 'assets/images/horse/horse-red.svg',
+                'horse-purple': 'assets/images/horse/horse-purple.png',
+                'horse-blue': 'assets/images/horse/horse-blue.png',
+                'horse-red': 'assets/images/horse/horse-red.png',
                 cloud: 'assets/images/horse/cloud.svg',
                 tree: 'assets/images/horse/tree.svg',
                 flowers: 'assets/images/horse/flowers.svg',
